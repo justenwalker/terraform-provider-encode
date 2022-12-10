@@ -6,14 +6,14 @@ Terraform provider that implements text encodings other than base64.
 Currently this is done via data sources. 
 This is a stop-gap solution until Terraform supports plugins that provide functions:
 
-    - hashicorp/terraform#2771
-    - hashicorp/terraform#27696
+- [Allow plugins to export custom functions #2771](https://github.com/hashicorp/terraform/issues/2771)
+- [Extending terraform with custom functions #27696](https://github.com/hashicorp/terraform/issues/27696)
 
 Requirements
 ------------
 
 - [Terraform](https://www.terraform.io/downloads.html) >= v1.2.x (Coould work with older versions too, untested.)
-- [Go](https://golang.org/doc/install) >= 1.19
+- [Go](https://golang.org/doc/install) >= 1.16
 
 Building The Provider
 ---------------------
