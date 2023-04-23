@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     encode = {
-      version = "0.1"
+      version = "0.2"
       source  = "registry.terraform.io/justenwalker/encode"
     }
   }
