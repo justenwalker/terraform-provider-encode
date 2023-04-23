@@ -3,12 +3,12 @@
 page_title: "encode_base36 Data Source - terraform-provider-encode"
 subcategory: ""
 description: |-
-  
+  Computes the base36 encoding of the given value
 ---
 
 # encode_base36 (Data Source)
 
-
+Computes the base36 encoding of the given value
 
 ## Example Usage
 
@@ -32,7 +32,7 @@ data "encode_base36" "something" {
 
 ### Read-Only
 
-- `id` (String) The ID of this resource.
+- `id` (String) data source identifier
 - `result` (String) The result of the base36 encoding operation
 
 
