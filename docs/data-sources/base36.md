@@ -34,5 +34,3 @@ data "encode_base36" "something" {
 
 - `id` (String) data source identifier
 - `result` (String) The result of the base36 encoding operation
-
-
