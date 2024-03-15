@@ -63,7 +63,7 @@ func (d *EncodeBase36DataSource) Read(ctx context.Context, req datasource.ReadRe
 	}
 	value := r.Value.ValueString()
 	id := generateID(value)
-	result := base36.EncodeBytes([]byte(value))
+	result := encodeBase36(value)
 	if r.Lowercase.ValueBool() {
 		result = strings.ToLower(result)
 	}
@@ -75,4 +75,8 @@ func (d *EncodeBase36DataSource) Read(ctx context.Context, req datasource.ReadRe
 func generateID(value string) string {
 	h := sha256.Sum256([]byte(value))
 	return hex.EncodeToString(h[:])
+}
+
+func encodeBase36(str string) string {
+	return base36.EncodeBytes([]byte(str))
 }
