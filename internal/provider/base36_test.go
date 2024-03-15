@@ -1,6 +1,8 @@
 package provider
 
 import (
+	"github.com/hashicorp/go-version"
+	"github.com/hashicorp/terraform-plugin-testing/tfversion"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
@@ -34,3 +36,26 @@ data "encode_base36" "test_lowercase" {
   lowercase = true
 }
 `
+
+func TestAccExampleFunction(t *testing.T) {
+	resource.Test(t, resource.TestCase{
+		PreCheck: func() { testAccPreCheck(t) },
+		TerraformVersionChecks: []tfversion.TerraformVersionCheck{
+			tfversion.SkipBelow(version.Must(version.NewVersion("1.8.0-beta1"))),
+		},
+		ProtoV6ProviderFactories: testAccProtoV6ProviderFactories,
+		Steps: []resource.TestStep{
+			// Read testing
+			{
+				Config: `
+				output "test" {
+					value = provider::encode::base36("hello")
+				}
+				`,
+				Check: resource.ComposeAggregateTestCheckFunc(
+					resource.TestCheckOutput("test", "5pzcszu7"),
+				),
+			},
+		},
+	})
+}
